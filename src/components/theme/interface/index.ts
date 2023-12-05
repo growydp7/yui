@@ -1,11 +1,25 @@
-/*
- * @Author: DESKTOP-LRKIFMR\UI1 209315540@qq.com
- * @Date: 2023-12-01 12:25:42
- * @LastEditors: DESKTOP-LRKIFMR\UI1 209315540@qq.com
- * @LastEditTime: 2023-12-01 12:26:48
- * @FilePath: \ScreenMediaMobiled:\project\yui\src\components\theme\interface\index.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-// import type { ComponentTokenMap } from './components'
+import type { ComponentTokenMap } from './components';
+import type { AliasToken } from './alias';
 
-export type { ComponentTokenMap } from './components'
+export type OverrideToken = {
+  [key in keyof ComponentTokenMap]: Partial<ComponentTokenMap[key]> & Partial<AliasToken>;
+};
+
+/** Final token which contains the components level override */
+export type GlobalToken = AliasToken & ComponentTokenMap;
+
+export { PresetColors } from './presetColors';
+export type { PresetColorType, ColorPalettes, PresetColorKey } from './presetColors';
+export type { SeedToken } from './seeds';
+export type {
+  MapToken,
+  ColorMapToken,
+  ColorNeutralMapToken,
+  CommonMapToken,
+  HeightMapToken,
+  SizeMapToken,
+  FontMapToken,
+  StyleMapToken,
+} from './maps';
+export type { AliasToken } from './alias';
+export type { ComponentTokenMap } from './components';
